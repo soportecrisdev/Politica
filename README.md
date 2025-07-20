@@ -83,11 +83,8 @@ ssh-tunnel-app/
 │   │   ├── res/
 │   │   └── AndroidManifest.xml
 │   └── test/
-├── docs/
-│   ├── privacy-policy.html
-│   └── README.md
 ├── assets/
-│   └── logo.svg
+│   └── logo.png
 └── build.gradle
 ```
 
@@ -164,7 +161,7 @@ Los ingresos se destinan a:
 ### 👨‍💻 Desarrollador
 - **Nombre**: CrisDEV
 - **Especialidad**: Desarrollo de aplicaciones de red y seguridad
-- **GitHub**: [@CrisDEV](https://github.com/soportecrisdev)
+- **GitHub**: [@soportecrisdev](https://github.com/soportecrisdev)
 
 ## 📄 Licencia
 
