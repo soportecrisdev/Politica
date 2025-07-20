@@ -1,0 +1,53 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100" width="100" height="100">
+  <defs>
+    <linearGradient id="bgGradient" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" style="stop-color:#667eea;stop-opacity:1" />
+      <stop offset="100%" style="stop-color:#764ba2;stop-opacity:1" />
+    </linearGradient>
+    <linearGradient id="textGradient" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" style="stop-color:#ffffff;stop-opacity:1" />
+      <stop offset="100%" style="stop-color:#f0f8ff;stop-opacity:1" />
+    </linearGradient>
+    <filter id="glow">
+      <feGaussianBlur stdDeviation="2" result="coloredBlur"/>
+      <feMerge> 
+        <feMergeNode in="coloredBlur"/>
+        <feMergeNode in="SourceGraphic"/>
+      </feMerge>
+    </filter>
+  </defs>
+  
+  <!-- Fondo circular con gradiente -->
+  <circle cx="50" cy="50" r="45" fill="url(#bgGradient)" stroke="#ffffff" stroke-width="2" opacity="0.9"/>
+  
+  <!-- Elementos de túnel SSH (líneas conectadas) -->
+  <g stroke="#ffffff" stroke-width="1.5" fill="none" opacity="0.3">
+    <path d="M20 30 Q50 25 80 30"/>
+    <path d="M20 50 Q50 45 80 50"/>
+    <path d="M20 70 Q50 75 80 70"/>
+  </g>
+  
+  <!-- Icono de terminal/SSH -->
+  <rect x="25" y="35" width="50" height="30" rx="3" fill="none" stroke="#ffffff" stroke-width="2" opacity="0.8"/>
+  <circle cx="30" cy="42" r="1.5" fill="#ffffff"/>
+  <circle cx="35" cy="42" r="1.5" fill="#ffffff"/>
+  <circle cx="40" cy="42" r="1.5" fill="#ffffff"/>
+  
+  <!-- Prompt símbolo -->
+  <text x="30" y="58" font-family="monospace" font-size="8" fill="#ffffff" opacity="0.9">$</text>
+  <rect x="35" y="52" width="8" height="2" fill="#ffffff" opacity="0.7"/>
+  
+  <!-- Texto "C" principal -->
+  <text x="50" y="55" font-family="Arial, sans-serif" font-size="24" font-weight="bold" 
+        text-anchor="middle" fill="url(#textGradient)" filter="url(#glow)">C</text>
+  
+  <!-- Elementos decorativos (puntos de conexión) -->
+  <circle cx="15" cy="50" r="3" fill="#ffffff" opacity="0.6"/>
+  <circle cx="85" cy="50" r="3" fill="#ffffff" opacity="0.6"/>
+  
+  <!-- Líneas de datos -->
+  <g stroke="#ffffff" stroke-width="1" opacity="0.4">
+    <line x1="18" y1="50" x2="25" y2="50"/>
+    <line x1="75" y1="50" x2="82" y2="50"/>
+  </g>
+</svg>

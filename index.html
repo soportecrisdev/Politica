@@ -1,0 +1,479 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="icon" href="cris.png" type="image/png">
+    <title>Política de Privacidad - SSH Tunnel App</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            line-height: 1.6;
+            color: #e0e0e0;
+            background: linear-gradient(135deg, #1a1a2e 0%, #16213e 50%, #0f3460 100%);
+            min-height: 100vh;
+            padding: 20px;
+        }
+
+        .container {
+            max-width: 800px;
+            margin: 0 auto;
+            background: rgba(20, 20, 30, 0.95);
+            backdrop-filter: blur(10px);
+            border-radius: 20px;
+            padding: 40px;
+            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.4);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+        }
+
+        .header {
+            text-align: center;
+            margin-bottom: 30px;
+        }
+
+        .logo {
+            width: 80px;
+            height: 80px;
+            margin-bottom: 20px;
+            filter: drop-shadow(0 4px 8px rgba(0, 0, 0, 0.2));
+            transition: transform 0.3s ease;
+        }
+
+        .logo:hover {
+            transform: scale(1.1) rotate(5deg);
+        }
+        h1 {
+            color: #2c3e50;
+            text-align: center;
+            margin-bottom: 10px;
+            font-size: 2.5em;
+            font-weight: 700;
+            background: linear-gradient(45deg, #667eea, #764ba2);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+
+        .subtitle {
+            text-align: center;
+            color: #b0b0b0;
+            margin-bottom: 30px;
+            font-size: 1.1em;
+        }
+
+        .last-updated {
+            text-align: center;
+            background: linear-gradient(45deg, #ff6b6b 0%, #4ecdc4 100%);
+            color: white;
+            padding: 10px 20px;
+            border-radius: 25px;
+            display: inline-block;
+            margin: 0 auto 40px auto;
+            font-weight: 600;
+            box-shadow: 0 4px 15px rgba(255, 107, 107, 0.3);
+        }
+
+        .section {
+            margin-bottom: 35px;
+            padding: 25px;
+            background: rgba(30, 30, 40, 0.8);
+            border-radius: 15px;
+            border-left: 5px solid #00d4ff;
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+            border: 1px solid rgba(255, 255, 255, 0.1);
+        }
+
+        .section:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 10px 25px rgba(0, 212, 255, 0.2);
+        }
+
+        h2 {
+            color: #ffffff;
+            margin-bottom: 15px;
+            font-size: 1.5em;
+            font-weight: 600;
+            display: flex;
+            align-items: center;
+        }
+
+        h2::before {
+            content: "🔒";
+            margin-right: 10px;
+            font-size: 1.2em;
+        }
+
+        h3 {
+            color: #c0c0c0;
+            margin: 20px 0 10px 0;
+            font-size: 1.2em;
+            font-weight: 600;
+        }
+
+        p {
+            margin-bottom: 15px;
+            text-align: justify;
+            color: #d0d0d0;
+        }
+
+        .protocols {
+            background: linear-gradient(45deg, #1e3c72, #2a5298);
+            color: white;
+            padding: 20px;
+            border-radius: 10px;
+            margin: 20px 0;
+            border: 1px solid rgba(255, 255, 255, 0.2);
+        }
+
+        .protocol-list {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 10px;
+            margin-top: 15px;
+        }
+
+        .protocol-item {
+            background: rgba(255, 255, 255, 0.2);
+            padding: 10px;
+            border-radius: 8px;
+            font-family: 'Courier New', monospace;
+            font-weight: 600;
+        }
+
+        .important {
+            background: linear-gradient(45deg, #ff416c, #ff4b2b);
+            color: white;
+            padding: 20px;
+            border-radius: 10px;
+            margin: 20px 0;
+            border: none;
+            box-shadow: 0 4px 15px rgba(255, 65, 108, 0.3);
+        }
+
+        .contact-info {
+            background: linear-gradient(45deg, #667eea, #764ba2);
+            color: white;
+            padding: 25px;
+            border-radius: 15px;
+            text-align: center;
+            margin-top: 30px;
+            box-shadow: 0 8px 25px rgba(102, 126, 234, 0.3);
+        }
+
+        .contact-info h3 {
+            color: white;
+            margin-bottom: 15px;
+        }
+
+        .email {
+            background: rgba(255, 255, 255, 0.2);
+            padding: 10px 20px;
+            border-radius: 25px;
+            display: inline-block;
+            font-weight: 600;
+            margin: 10px;
+        }
+
+        ul {
+            margin-left: 20px;
+            margin-bottom: 15px;
+        }
+
+        li {
+            margin-bottom: 8px;
+            color: #d0d0d0;
+        }
+
+        .data-types {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 15px;
+            margin: 20px 0;
+        }
+
+        .data-type {
+            background: rgba(0, 212, 255, 0.1);
+            padding: 15px;
+            border-radius: 10px;
+            border-left: 4px solid #00d4ff;
+            border: 1px solid rgba(255, 255, 255, 0.1);
+        }
+
+        @media (max-width: 768px) {
+            .container {
+                padding: 20px;
+                margin: 10px;
+            }
+            
+            h1 {
+                font-size: 2em;
+            }
+            
+            .protocol-list {
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="header">
+            <img src="cris.png" alt="CrisDEV Logo" class="logo">
+            <h1>Política de Privacidad</h1>
+            <p class="subtitle">SSH Tunnel Application by CrisDEV</p>
+        </div>
+        
+        <div class="last-updated">
+            Última actualización: Julio 2025
+        </div>
+
+        <div class="section">
+            <h2>1. Introducción</h2>
+            <p>
+                Esta Política de Privacidad describe cómo nuestra aplicación SSH Tunnel ("la Aplicación") recopila, 
+                utiliza y protege su información personal cuando utiliza nuestros servicios de túnel SSH y protocolos 
+                de conexión segura.
+            </p>
+            <p>
+                Al utilizar nuestra aplicación, usted acepta las prácticas descritas en esta política de privacidad.
+            </p>
+        </div>
+
+        <div class="section">
+            <h2>2. Información que Recopilamos</h2>
+            
+            <h3>📱 Información Requerida por Google Play Store</h3>
+            <p>
+                Para cumplir con las políticas de Google Play Store y ofrecer un servicio seguro, 
+                recopilamos la siguiente información:
+            </p>
+            
+            <div class="data-types">
+                <div class="data-type">
+                    <h3>Datos de Conexión SSH</h3>
+                    <p>Información técnica necesaria para establecer conexiones SSH seguras, incluyendo configuraciones de servidor y protocolos utilizados.</p>
+                </div>
+                
+                <div class="data-type">
+                    <h3>Identificadores de Publicidad</h3>
+                    <p>ID de publicidad de Google (GAID) para mostrar anuncios personalizados según las políticas de Google Play.</p>
+                </div>
+                
+                <div class="data-type">
+                    <h3>Datos de Uso y Rendimiento</h3>
+                    <p>Estadísticas de uso, informes de fallos y datos de rendimiento para mejorar la aplicación.</p>
+                </div>
+                
+                <div class="data-type">
+                    <h3>Información del Dispositivo</h3>
+                    <p>Modelo de dispositivo, versión de Android, configuración de red para compatibilidad y optimización.</p>
+                </div>
+            </div>
+            
+            <div class="important">
+                <h3>🔐 Datos Sensibles - Política Estricta</h3>
+                <p>
+                    <strong>NO recopilamos:</strong> contraseñas, claves privadas SSH, contenido de tráfico, 
+                    historial de navegación, datos personales identificables, o cualquier información 
+                    transmitida a través de los túneles SSH.
+                </p>
+            </div>
+        </div>
+
+        <div class="section">
+            <h2>3. Protocolos Soportados</h2>
+            <p>
+                Nuestra aplicación utiliza los siguientes protocolos de túnel para proporcionar conexiones seguras:
+            </p>
+            
+            <div class="protocols">
+                <h3>Protocolos de Túnel Implementados:</h3>
+                <div class="protocol-list">
+                    <div class="protocol-item">SSH_DIRECT (Tipo 1)</div>
+                    <div class="protocol-item">SSH_PROXY (Tipo 2)</div>
+                    <div class="protocol-item">SSH_SSL (Tipo 3)</div>
+                    <div class="protocol-item">PAY_SSL (Tipo 4)</div>
+                    <div class="protocol-item">SLOWDNS (Tipo 5)</div>
+                    <div class="protocol-item">UDP (Tipo 6)</div>
+                    <div class="protocol-item">V2RAY (Tipo 7)</div>
+                </div>
+            </div>
+            
+            <p>
+                Cada protocolo maneja los datos de manera diferente, pero todos están diseñados para 
+                mantener la privacidad y seguridad de sus conexiones.
+            </p>
+        </div>
+
+        <div class="section">
+            <h2>4. Cómo Utilizamos su Información</h2>
+            <p>Utilizamos la información recopilada para:</p>
+            <ul>
+                <li>Establecer y mantener conexiones SSH seguras</li>
+                <li>Optimizar el rendimiento de los protocolos de túnel</li>
+                <li>Proporcionar soporte técnico y resolver problemas</li>
+                <li>Mostrar anuncios relevantes para mantener el servicio gratuito</li>
+                <li>Mejorar la funcionalidad y seguridad de la aplicación</li>
+                <li>Cumplir con obligaciones legales y de seguridad</li>
+            </ul>
+        </div>
+
+        <div class="section">
+            <h2>5. Publicidad y Monetización - Google Play Compliance</h2>
+            <div class="important">
+                <h3>🎯 Sistema de Anuncios Certificado</h3>
+                <p>
+                    Nuestra aplicación utiliza Google AdMob y otros proveedores de anuncios certificados 
+                    por Google Play Store para mostrar publicidad no intrusiva que mantiene el servicio gratuito.
+                </p>
+            </div>
+            
+            <h3>📋 Proveedores de Publicidad Autorizados:</h3>
+            <ul>
+                <li><strong>Google AdMob</strong> - Anuncios principales con targeting responsable</li>
+                <li><strong>Facebook Audience Network</strong> - Anuncios complementarios</li>
+                <li><strong>Unity Ads</strong> - Anuncios de video opcionales para beneficios premium</li>
+            </ul>
+            
+            <h3>🎛️ Control de Anuncios:</h3>
+            <ul>
+                <li>Puedes limitar la personalización de anuncios en Configuración → Privacidad → Anuncios</li>
+                <li>Opción de eliminar anuncios con suscripción premium</li>
+                <li>Los anuncios no interfieren con la funcionalidad SSH</li>
+                <li>Respetamos la configuración "Opt-out of Ads Personalization" de Google</li>
+            </ul>
+            
+            <p>Los ingresos se utilizan exclusivamente para:</p>
+            <ul>
+                <li>Mantenimiento de servidores SSH de alta calidad</li>
+                <li>Infraestructura de red y ancho de banda</li>
+                <li>Desarrollo continuo y actualizaciones de seguridad</li>
+                <li>Cumplimiento con estándares de Google Play Store</li>
+            </ul>
+        </div>
+
+        <div class="section">
+            <h2>6. Seguridad de Datos</h2>
+            <p>
+                Implementamos medidas de seguridad técnicas y organizativas apropiadas para proteger 
+                su información personal contra acceso no autorizado, alteración, divulgación o destrucción.
+            </p>
+            
+            <h3>Medidas de Seguridad:</h3>
+            <ul>
+                <li>Cifrado end-to-end en todas las conexiones SSH</li>
+                <li>Protocolos de seguridad actualizados regularmente</li>
+                <li>Monitoreo continuo de la infraestructura</li>
+                <li>Acceso restringido a datos sensibles</li>
+                <li>Auditorías de seguridad periódicas</li>
+            </ul>
+        </div>
+
+        <div class="section">
+            <h2>7. Compartir Información</h2>
+            <p>
+                <strong>No vendemos, alquilamos o compartimos su información personal</strong> con terceros, 
+                excepto en las siguientes circunstancias:
+            </p>
+            <ul>
+                <li>Con su consentimiento explícito</li>
+                <li>Para cumplir con obligaciones legales</li>
+                <li>Para proteger nuestros derechos y seguridad</li>
+                <li>Con proveedores de servicios que nos ayudan a operar la aplicación (bajo estrictos acuerdos de confidencialidad)</li>
+            </ul>
+        </div>
+
+        <div class="section">
+            <h2>8. Sus Derechos</h2>
+            <p>Usted tiene derecho a:</p>
+            <ul>
+                <li>Acceder a su información personal</li>
+                <li>Rectificar datos inexactos</li>
+                <li>Solicitar la eliminación de sus datos</li>
+                <li>Oponerse al procesamiento de sus datos</li>
+                <li>Solicitar la portabilidad de datos</li>
+                <li>Retirar el consentimiento en cualquier momento</li>
+            </ul>
+        </div>
+
+        <div class="section">
+            <h2>9. Retención de Datos</h2>
+            <p>
+                Conservamos su información personal solo durante el tiempo necesario para cumplir con 
+                los propósitos descritos en esta política, a menos que la ley requiera un período de 
+                retención más largo.
+            </p>
+        </div>
+
+        <div class="section">
+            <h2>11. Cumplimiento con Google Play Store</h2>
+            <div class="important">
+                <h3>✅ Certificación Google Play</h3>
+                <p>
+                    Esta aplicación cumple completamente con las Políticas para Desarrolladores de Google Play Store, 
+                    incluyendo pero no limitándose a:
+                </p>
+            </div>
+            
+            <h3>📋 Cumplimiento Específico:</h3>
+            <ul>
+                <li><strong>Datos de Usuario y Privacidad:</strong> Transparencia total en recopilación y uso de datos</li>
+                <li><strong>Familias (Diseñado para Familias):</strong> Aplicación apta para usuarios de 13+ años</li>
+                <li><strong>Permisos:</strong> Solo solicitamos permisos esenciales para funcionalidad SSH</li>
+                <li><strong>Publicidad:</strong> Anuncios apropiados mediante proveedores certificados</li>
+                <li><strong>Contenido Generado por Usuario:</strong> No aplicable - no hay contenido UGC</li>
+                <li><strong>Actividad Financiera:</strong> Transacciones seguras para premium (cuando aplique)</li>
+            </ul>
+            
+            <h3>🔒 Permisos de Android Utilizados:</h3>
+            <ul>
+                <li><code>INTERNET</code> - Requerido para conexiones SSH</li>
+                <li><code>ACCESS_NETWORK_STATE</code> - Verificar estado de conexión</li>
+                <li><code>WAKE_LOCK</code> - Mantener conexiones SSH activas</li>
+                <li><code>RECEIVE_BOOT_COMPLETED</code> - Auto-conexión opcional</li>
+                <li><code>WRITE_EXTERNAL_STORAGE</code> - Guardar configuraciones (opcional)</li>
+            </ul>
+            
+            <p>
+                <strong>Todos los permisos son justificados</strong> y utilizados únicamente para 
+                la funcionalidad declarada de túneles SSH.
+            </p>
+        </div>
+
+        <div class="section">
+            <h2>12. Edad Mínima y Restricciones</h2>
+            <p>
+                Esta aplicación está diseñada para usuarios de <strong>13 años en adelante</strong>, 
+                cumpliendo con COPPA (Children's Online Privacy Protection Act) y las regulaciones 
+                de Google Play para aplicaciones dirigidas a menores.
+            </p>
+            
+            <h3>🔞 Restricciones de Edad:</h3>
+            <ul>
+                <li>Usuarios menores de 13 años: No permitidos</li>
+                <li>Usuarios de 13-17 años: Requieren supervisión parental</li>
+                <li>La aplicación no recopila información de menores de 13 años intencionalmente</li>
+                <li>Si detectamos usuarios menores de 13 años, eliminaremos sus datos inmediatamente</li>
+            </ul>
+        </div>
+
+        <div class="contact-info">
+            <h3>📧 Contacto</h3>
+            <p>
+                Si tiene preguntas sobre esta Política de Privacidad o desea ejercer sus derechos, 
+                puede contactarnos en:
+            </p>
+            <div class="email">soportecrisdev@gmail.com</div>
+            <p style="margin-top: 15px; font-size: 0.9em; opacity: 0.9;">
+                Desarrollado por CrisDEV | Responderemos dentro de 30 días hábiles.
+            </p>
+        </div>
+    </div>
+</body>
+</html>
